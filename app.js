@@ -7,10 +7,13 @@ const giftEx = require("./routes/gift-exchange");
 const app = express(); //inst
 
 //app.listen(3000, () => console.log("listening on port"));
-module.exports = app;
+
 app.use(morgan("tiny"));
 app.use("/gift-exchange", giftEx);
+app.use(express.json());
 
 app.get("/", async (req, res, next) => {
   res.status(200).json({ ping: "pong" });
 });
+
+module.exports = app;
